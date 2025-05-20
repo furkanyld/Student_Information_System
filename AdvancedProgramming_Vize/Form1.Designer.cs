@@ -47,6 +47,8 @@
             listViewStudentList = new ListView();
             comboBoxListView = new ComboBox();
             groupBoxStudentInfo = new GroupBox();
+            label1 = new Label();
+            textBoxTC = new TextBox();
             groupBoxIcon = new GroupBox();
             pictureBox4 = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -66,12 +68,15 @@
             textBoxSurname = new TextBox();
             textBoxName = new TextBox();
             groupBoxStudentList = new GroupBox();
+            buttonListAll = new Button();
             labelListView = new Label();
             groupBoxHobby = new GroupBox();
             checkBoxCinema = new CheckBox();
             checkBoxBook = new CheckBox();
             checkBoxMusic = new CheckBox();
             buttonAddList = new Button();
+            buttonDelete = new Button();
+            buttonUpdate = new Button();
             toolStrip1.SuspendLayout();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -92,7 +97,7 @@
             toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripButton2, toolStripButton3 });
             toolStrip1.Location = new Point(0, 28);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(996, 27);
+            toolStrip1.Size = new Size(1141, 27);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -103,7 +108,7 @@
             toolStripButton1.ImageTransparentColor = Color.Magenta;
             toolStripButton1.Name = "toolStripButton1";
             toolStripButton1.Size = new Size(29, 24);
-            toolStripButton1.Text = "toolStripButton1";
+            toolStripButton1.Text = "Bilgileri Temizle";
             toolStripButton1.Click += toolStripButton1_Click;
             // 
             // toolStripButton2
@@ -113,7 +118,7 @@
             toolStripButton2.ImageTransparentColor = Color.Magenta;
             toolStripButton2.Name = "toolStripButton2";
             toolStripButton2.Size = new Size(29, 24);
-            toolStripButton2.Text = "toolStripButton2";
+            toolStripButton2.Text = "Listeyi Temizle";
             toolStripButton2.Click += toolStripButton2_Click;
             // 
             // toolStripButton3
@@ -123,7 +128,7 @@
             toolStripButton3.ImageTransparentColor = Color.Magenta;
             toolStripButton3.Name = "toolStripButton3";
             toolStripButton3.Size = new Size(29, 24);
-            toolStripButton3.Text = "toolStripButton3";
+            toolStripButton3.Text = "Hakkında";
             toolStripButton3.Click += toolStripButton3_Click;
             // 
             // menuStrip1
@@ -132,7 +137,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { dosyaToolStripMenuItem, yardımToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(996, 28);
+            menuStrip1.Size = new Size(1141, 28);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -182,9 +187,9 @@
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1 });
-            statusStrip1.Location = new Point(0, 575);
+            statusStrip1.Location = new Point(0, 589);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(996, 26);
+            statusStrip1.Size = new Size(1141, 26);
             statusStrip1.TabIndex = 2;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -200,16 +205,16 @@
             comboBoxCity.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxCity.FormattingEnabled = true;
             comboBoxCity.Items.AddRange(new object[] { "Ankara", "Eskişehir", "İstanbul", "İzmir" });
-            comboBoxCity.Location = new Point(134, 92);
+            comboBoxCity.Location = new Point(135, 130);
             comboBoxCity.Name = "comboBoxCity";
             comboBoxCity.Size = new Size(167, 28);
             comboBoxCity.TabIndex = 3;
-            comboBoxCity.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            comboBoxCity.SelectedIndexChanged += comboBoxCity_SelectedIndexChanged;
             // 
             // listBoxDistrict
             // 
             listBoxDistrict.FormattingEnabled = true;
-            listBoxDistrict.Location = new Point(134, 126);
+            listBoxDistrict.Location = new Point(135, 164);
             listBoxDistrict.Name = "listBoxDistrict";
             listBoxDistrict.Size = new Size(167, 104);
             listBoxDistrict.TabIndex = 4;
@@ -217,25 +222,30 @@
             // 
             // listViewStudentList
             // 
-            listViewStudentList.Location = new Point(38, 38);
+            listViewStudentList.FullRowSelect = true;
+            listViewStudentList.Location = new Point(6, 26);
+            listViewStudentList.MultiSelect = false;
             listViewStudentList.Name = "listViewStudentList";
-            listViewStudentList.Size = new Size(583, 397);
+            listViewStudentList.Size = new Size(765, 452);
             listViewStudentList.TabIndex = 5;
             listViewStudentList.UseCompatibleStateImageBehavior = false;
+            listViewStudentList.SelectedIndexChanged += listViewStudentList_SelectedIndexChanged;
             // 
             // comboBoxListView
             // 
             comboBoxListView.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxListView.FormattingEnabled = true;
             comboBoxListView.Items.AddRange(new object[] { "Büyük İkon (Large Icon)", "Küçük İkon (Small Icon)", "Detay (Details)", "Döşeme (Tile)", "Liste (List)" });
-            comboBoxListView.Location = new Point(419, 441);
+            comboBoxListView.Location = new Point(582, 486);
             comboBoxListView.Name = "comboBoxListView";
             comboBoxListView.Size = new Size(189, 28);
             comboBoxListView.TabIndex = 6;
-            comboBoxListView.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
+            comboBoxListView.SelectedIndexChanged += this.comboBoxListView_SelectedIndexChanged;
             // 
             // groupBoxStudentInfo
             // 
+            groupBoxStudentInfo.Controls.Add(label1);
+            groupBoxStudentInfo.Controls.Add(textBoxTC);
             groupBoxStudentInfo.Controls.Add(groupBoxIcon);
             groupBoxStudentInfo.Controls.Add(groupBoxGender);
             groupBoxStudentInfo.Controls.Add(labelDistrict);
@@ -246,12 +256,28 @@
             groupBoxStudentInfo.Controls.Add(textBoxName);
             groupBoxStudentInfo.Controls.Add(comboBoxCity);
             groupBoxStudentInfo.Controls.Add(listBoxDistrict);
-            groupBoxStudentInfo.Location = new Point(12, 72);
+            groupBoxStudentInfo.Location = new Point(0, 58);
             groupBoxStudentInfo.Name = "groupBoxStudentInfo";
-            groupBoxStudentInfo.Size = new Size(324, 345);
+            groupBoxStudentInfo.Size = new Size(346, 528);
             groupBoxStudentInfo.TabIndex = 7;
             groupBoxStudentInfo.TabStop = false;
             groupBoxStudentInfo.Text = "Öğrenci Bilgileri";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(7, 34);
+            label1.Name = "label1";
+            label1.Size = new Size(28, 20);
+            label1.TabIndex = 14;
+            label1.Text = "TC:";
+            // 
+            // textBoxTC
+            // 
+            textBoxTC.Location = new Point(136, 31);
+            textBoxTC.Name = "textBoxTC";
+            textBoxTC.Size = new Size(165, 27);
+            textBoxTC.TabIndex = 13;
             // 
             // groupBoxIcon
             // 
@@ -263,7 +289,7 @@
             groupBoxIcon.Controls.Add(radioButton5);
             groupBoxIcon.Controls.Add(radioButton4);
             groupBoxIcon.Controls.Add(radioButton3);
-            groupBoxIcon.Location = new Point(135, 237);
+            groupBoxIcon.Location = new Point(135, 274);
             groupBoxIcon.Name = "groupBoxIcon";
             groupBoxIcon.Size = new Size(166, 90);
             groupBoxIcon.TabIndex = 12;
@@ -350,7 +376,7 @@
             // 
             groupBoxGender.Controls.Add(radioButton2);
             groupBoxGender.Controls.Add(radioButton1);
-            groupBoxGender.Location = new Point(15, 237);
+            groupBoxGender.Location = new Point(19, 274);
             groupBoxGender.Name = "groupBoxGender";
             groupBoxGender.Size = new Size(110, 90);
             groupBoxGender.TabIndex = 11;
@@ -382,7 +408,7 @@
             // labelDistrict
             // 
             labelDistrict.AutoSize = true;
-            labelDistrict.Location = new Point(6, 126);
+            labelDistrict.Location = new Point(7, 164);
             labelDistrict.Name = "labelDistrict";
             labelDistrict.Size = new Size(45, 20);
             labelDistrict.TabIndex = 10;
@@ -391,7 +417,7 @@
             // labelCity
             // 
             labelCity.AutoSize = true;
-            labelCity.Location = new Point(6, 95);
+            labelCity.Location = new Point(7, 133);
             labelCity.Name = "labelCity";
             labelCity.Size = new Size(24, 20);
             labelCity.TabIndex = 9;
@@ -400,7 +426,7 @@
             // labelSurname
             // 
             labelSurname.AutoSize = true;
-            labelSurname.Location = new Point(6, 62);
+            labelSurname.Location = new Point(7, 100);
             labelSurname.Name = "labelSurname";
             labelSurname.Size = new Size(57, 20);
             labelSurname.TabIndex = 8;
@@ -410,7 +436,7 @@
             // labelName
             // 
             labelName.AutoSize = true;
-            labelName.Location = new Point(6, 29);
+            labelName.Location = new Point(7, 67);
             labelName.Name = "labelName";
             labelName.Size = new Size(35, 20);
             labelName.TabIndex = 7;
@@ -418,34 +444,45 @@
             // 
             // textBoxSurname
             // 
-            textBoxSurname.Location = new Point(135, 59);
+            textBoxSurname.Location = new Point(136, 97);
             textBoxSurname.Name = "textBoxSurname";
             textBoxSurname.Size = new Size(166, 27);
             textBoxSurname.TabIndex = 6;
             // 
             // textBoxName
             // 
-            textBoxName.Location = new Point(135, 26);
+            textBoxName.Location = new Point(136, 64);
             textBoxName.Name = "textBoxName";
             textBoxName.Size = new Size(166, 27);
             textBoxName.TabIndex = 5;
             // 
             // groupBoxStudentList
             // 
+            groupBoxStudentList.Controls.Add(buttonListAll);
             groupBoxStudentList.Controls.Add(labelListView);
             groupBoxStudentList.Controls.Add(listViewStudentList);
             groupBoxStudentList.Controls.Add(comboBoxListView);
-            groupBoxStudentList.Location = new Point(342, 72);
+            groupBoxStudentList.Location = new Point(352, 58);
             groupBoxStudentList.Name = "groupBoxStudentList";
-            groupBoxStudentList.Size = new Size(642, 489);
+            groupBoxStudentList.Size = new Size(777, 528);
             groupBoxStudentList.TabIndex = 8;
             groupBoxStudentList.TabStop = false;
             groupBoxStudentList.Text = "Öğrenci Listesi";
             // 
+            // buttonListAll
+            // 
+            buttonListAll.Location = new Point(6, 485);
+            buttonListAll.Name = "buttonListAll";
+            buttonListAll.Size = new Size(152, 29);
+            buttonListAll.TabIndex = 12;
+            buttonListAll.Text = "Tüm Kayıtları Listele";
+            buttonListAll.UseVisualStyleBackColor = true;
+            buttonListAll.Click += buttonListAll_Click;
+            // 
             // labelListView
             // 
             labelListView.AutoSize = true;
-            labelListView.Location = new Point(280, 444);
+            labelListView.Location = new Point(443, 489);
             labelListView.Name = "labelListView";
             labelListView.Size = new Size(115, 20);
             labelListView.TabIndex = 11;
@@ -498,17 +535,39 @@
             // 
             buttonAddList.Location = new Point(12, 543);
             buttonAddList.Name = "buttonAddList";
-            buttonAddList.Size = new Size(145, 29);
+            buttonAddList.Size = new Size(130, 29);
             buttonAddList.TabIndex = 10;
             buttonAddList.Text = "Listeye Ekle>>";
             buttonAddList.UseVisualStyleBackColor = true;
             buttonAddList.Click += buttonAddList_Click;
             // 
+            // buttonDelete
+            // 
+            buttonDelete.Location = new Point(148, 543);
+            buttonDelete.Name = "buttonDelete";
+            buttonDelete.Size = new Size(72, 29);
+            buttonDelete.TabIndex = 11;
+            buttonDelete.Text = "Sil";
+            buttonDelete.UseVisualStyleBackColor = true;
+            buttonDelete.Click += buttonDelete_Click;
+            // 
+            // buttonUpdate
+            // 
+            buttonUpdate.Location = new Point(226, 543);
+            buttonUpdate.Name = "buttonUpdate";
+            buttonUpdate.Size = new Size(110, 29);
+            buttonUpdate.TabIndex = 12;
+            buttonUpdate.Text = "Güncelle";
+            buttonUpdate.UseVisualStyleBackColor = true;
+            buttonUpdate.Click += buttonUpdate_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(996, 601);
+            ClientSize = new Size(1141, 615);
+            Controls.Add(buttonUpdate);
+            Controls.Add(buttonDelete);
             Controls.Add(buttonAddList);
             Controls.Add(groupBoxHobby);
             Controls.Add(groupBoxStudentList);
@@ -589,5 +648,10 @@
         private ToolStripMenuItem listeyiTemizleToolStripMenuItem;
         private ToolStripMenuItem çıkışToolStripMenuItem;
         private ToolStripMenuItem hakkındaCtrlHToolStripMenuItem;
+        private TextBox textBoxTC;
+        private Label label1;
+        private Button buttonDelete;
+        private Button buttonUpdate;
+        private Button buttonListAll;
     }
 }
